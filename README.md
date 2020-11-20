@@ -1,10 +1,10 @@
 # Homomorphism-Encryption-KV-Store-Server
 
-## INSTALL
+## Install
 
 ### Make sure you clone all the submodules (SEAL and rpclib)
 ```
-git clone --recurse-submodules https://github.com/laiKwunSing/Homomorphism-Encryption-KV-Store.git
+git clone --recurse-submodules https://github.com/laiKwunSing/Homomorphism-Encryption-KV-Store-Server.git
 ```
 
 ### Compile and build

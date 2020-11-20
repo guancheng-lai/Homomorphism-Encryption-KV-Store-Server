@@ -11,12 +11,12 @@ unordered_map<string, unordered_map<string, Ciphertext>> stores;
 std::shared_ptr<SEALContext> context;
 
 void init() {
-  EncryptionParameters parms(scheme_type::BFV);
+  EncryptionParameters parms(scheme_type::bfv);
   size_t poly_modulus_degree = 4096;
   parms.set_poly_modulus_degree(poly_modulus_degree);
   parms.set_coeff_modulus(CoeffModulus::BFVDefault(poly_modulus_degree));
   parms.set_plain_modulus(1024);
-  context = SEALContext::Create(parms);
+  context = std::make_shared<SEALContext>(parms);
   password["Gamestop"] = hash<string>{}("111111");
   password["Walmart"] = hash<string>{}("222222");
   password["BestBuy"] = hash<string>{}("333333");
@@ -50,9 +50,9 @@ vector<unsigned char> to_vector(stringstream& ss)
 
 pair<vector<unsigned char>,int> Get(const string& user, const string& product) {
   cout << "[" << user << "] Get(" << product << ")" << endl;
-  seal::Ciphertext cipher_result(context);
+  seal::Ciphertext cipher_result(*context);
   int numEntries = 0;
-  Evaluator evaluator(context);
+  Evaluator evaluator(*context);
   for (auto& [store,salesData] : stores) {
     auto it = salesData.find(product);
     if (it != salesData.end()) {
@@ -69,7 +69,7 @@ void Set(const string& store, const string& product, const vector<unsigned char>
   cout << "[" << store << "] Set(" << product << ")" << endl;
   Ciphertext ciphertext;
   stringstream ss = to_stream(data);
-  ciphertext.load(context, ss);
+  ciphertext.load(*context, ss);
   stores[store][product] = ciphertext;
 }
 

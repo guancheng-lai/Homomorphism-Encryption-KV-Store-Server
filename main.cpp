@@ -2,6 +2,7 @@
 #include <sstream>
 #include "rpc/server.h"
 #include "seal/seal.h"
+#include "hash.hpp"
 
 using namespace seal;
 using namespace std;
@@ -17,10 +18,10 @@ void init() {
   parms.set_coeff_modulus(CoeffModulus::BFVDefault(poly_modulus_degree));
   parms.set_plain_modulus(1024);
   context = std::make_shared<SEALContext>(parms);
-  password["Gamestop"] = hash<string>{}("111111");
-  password["Walmart"] = hash<string>{}("222222");
-  password["BestBuy"] = hash<string>{}("333333");
-  password["Target"] = hash<string>{}("444444");
+  password["Gamestop"] = Hash("111111", 6, 0);
+  password["Walmart"] = Hash("222222", 6, 0);
+  password["BestBuy"] = Hash("333333", 6, 0);
+  password["Target"] = Hash("444444", 6, 0);
 }
 
 stringstream to_stream(vector<unsigned char> const& v)

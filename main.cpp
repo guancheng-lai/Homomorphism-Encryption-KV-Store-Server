@@ -49,8 +49,8 @@ vector<unsigned char> to_vector(stringstream& ss)
   return v;
 }
 
-pair<vector<unsigned char>,int> Get(const string& user, const string& product) {
-  cout << "[" << user << "] Get(" << product << ")" << endl;
+pair<vector<unsigned char>,int> Avg(const string& user, const string& product) {
+  cout << "[" << user << "] Avg(" << product << ")" << endl;
   seal::Ciphertext cipher_result(*context);
   int numEntries = 0;
   Evaluator evaluator(*context);
@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
   rpc::server srv(8081);
 
   srv.bind("Login", &Login);
-  srv.bind("Get", &Get);
+  srv.bind("Avg", &Avg);
   srv.bind("Set", &Set);
 
   cout << "Start!" << endl;

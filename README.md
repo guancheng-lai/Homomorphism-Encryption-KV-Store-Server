@@ -9,7 +9,7 @@ Make sure you have the latest version of <strong>gcc</strong> and <strong>cmake<
 git clone --recurse-submodules https://github.com/laiKwunSing/Homomorphism-Encryption-KV-Store-Server.git
 ```
 
-### Comile and build the submodules (Skip this if you have done this in the server repo)
+### Comile and build the submodules (Skip this if you have done this in the client repo)
 ```
 cd seal && cmake . && make -j && sudo make install
 ```

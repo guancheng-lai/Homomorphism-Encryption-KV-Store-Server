@@ -11,7 +11,7 @@ git clone --recurse-submodules https://github.com/laiKwunSing/Homomorphism-Encry
 
 ### Comile and build the submodules (Skip this if you have done this in the client repo)
 ```
-cd seal && cmake . && make -j && sudo make install
+cd SEAL && cmake . && make -j && sudo make install
 ```
 
 ```
@@ -19,7 +19,7 @@ cd rpclib && mkdir build && cd build
 cmake .. && make -j && sudo make install
 ```
 
-### Compile and build
+### Compile and build itself
 ```
 mkdir build && cd build
 cmake .. && make -j

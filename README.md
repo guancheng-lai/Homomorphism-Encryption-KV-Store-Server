@@ -2,7 +2,7 @@
 
 
 ## Install
-Make sure you have the latest version of <strong>gcc</strong> and <strong>cmake</strong> before proceeding
+Make sure you have the latest version of <strong>gcc</strong> and <strong>cmake</strong> and root privileged before proceeding
 
 ### Make sure you clone all the submodules (SEAL and rpclib)
 ```

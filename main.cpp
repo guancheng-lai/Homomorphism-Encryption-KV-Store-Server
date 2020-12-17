@@ -11,7 +11,7 @@ unordered_map<string, size_t> password;
 unordered_map<string, unordered_map<string, Ciphertext>> stores;
 std::shared_ptr<SEALContext> context;
 
-void init() {
+void Init() {
   EncryptionParameters parms(scheme_type::bfv);
   size_t poly_modulus_degree = 4096;
   parms.set_poly_modulus_degree(poly_modulus_degree);
@@ -24,15 +24,13 @@ void init() {
   password["Target"] = Hash("444444", 6, 0);
 }
 
-stringstream to_stream(vector<unsigned char> const& v)
-{
+stringstream ToStream(vector<unsigned char> const& v) {
   std::stringstream ss;
   ss.write((char const*)v.data(), std::streamsize(v.size()));
   return ss;
 }
 
-vector<unsigned char> to_vector(stringstream& ss)
-{
+vector<unsigned char> ToVector(stringstream& ss) {
   // discover size of data in stream
   ss.seekg(0, std::ios::beg);
   auto bof = ss.tellg();
